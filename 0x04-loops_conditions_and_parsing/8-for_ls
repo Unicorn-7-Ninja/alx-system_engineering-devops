@@ -3,11 +3,7 @@
 #displays Where only the part of the name after the first dash is displayed
 #for loop
 
-for i in *; 
-do
-    if [[ ! $i == .* && -f $i ]]; 
-then
-         list=$(echo "$i" | cut -d '-' -f 2-)
-        echo "$list"
-    fi
+list=$(ls)
+for i in $list; do
+  echo "$i" | cut -d '-' -f2
 done
