@@ -1,0 +1,9 @@
+#displays The content of the current directory
+#displays In a list format
+#displays Where only the part of the name after the first dash is displayed
+#for loop
+
+list=$(ls)
+for i in $list; do
+  echo "$i" | cut -d '-' -f2
+done

@@ -11,5 +11,5 @@ while [ $count -lt 10 ];
 >>>>>>> b23bf983317541d49a349421213a181258a8838e
 do
     echo "Best School"
-    (( count++ ))
+    ((count++))
 done
