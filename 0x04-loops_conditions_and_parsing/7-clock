@@ -9,12 +9,8 @@
 hour=0
 minute=1
 
-while [ $hour -le 12 ];
+while [ $hour -le 12 ] && while [ $minute -le 59 ];
 do
-    echo "$hours"
-while [ $minute -le 59 ];
-do
-    echo "$minutes"
-    ((hour++))
-    ((minute++))
+    echo "$hours" && echo "$minutes"
+    ((hour++)) && ((minute++))
 done
