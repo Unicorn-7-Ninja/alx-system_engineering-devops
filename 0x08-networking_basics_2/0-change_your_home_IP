@@ -1,7 +1,26 @@
 #!/usr/bin/env bash
 #localhost resolves to 127.0.0.2 & facebook.com resolves to 8.8.8.8
 
+# Copier le fichier /etc/hosts dans un nouveau fichier
 cp /etc/hosts ~/hosts.new
-  echo '^127.0.0.2( |\t){1,10}localhost( |\t)' >> ~/hosts.new
-  echo '8.8.8.8 facebook' >> ~/hosts.new
+
+# Vérifier si localhost est déjà résolu à 127.0.0.2
+if ! grep -qE '127\.0\.0\.2\s+localhost' ~/hosts.new; then
+
+# Ajouter l'entrée localhost si elle n'existe pas
+    echo '127.0.0.2 localhost' >> ~/hosts.new
+fi
+
+# Vérifier si facebook.com est déjà résolu à 8.8.8.8
+if ! grep -qE '8\.8\.8\.8\s+facebook\.com' ~/hosts.new; then
+
+# Ajouter l'entrée facebook.com si elle n'existe pas
+    echo '8.8.8.8 facebook.com' >> ~/hosts.new
+fi
+
+# Remplacer le fichier /etc/hosts par le nouveau fichier
 cp -f ~/hosts.new /etc/hosts
+
+# Afficher un message pour indiquer que les résolutions ont été faites
+echo "localhost resolves to 127.0.0.2"
+echo "facebook.com resolves to 8.8.8.8"
